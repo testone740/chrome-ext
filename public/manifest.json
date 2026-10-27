@@ -3,10 +3,23 @@
   "version": "1.0.0",
   "name": "Chrome Extension Template",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_icon": "idea.png"
+  },
+  "commands": {
+    "open_side_panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "Command+Shift+O"
+      },
+      "description": "Open the side panel"
+    }
   },
   "side_panel": {
     "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "permissions": ["sidePanel"],
   "host_permissions": ["http://*/*", "https://*/*"]
