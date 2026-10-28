@@ -1,19 +1,11 @@
 {
   "manifest_version": 3,
   "version": "1.0.0",
-  "name": "Chrome Extension Template",
+  "name": "My Extension",
   "action": {
+    "default_icon": "idea.png",
     "default_popup": "index.html",
-    "default_icon": "idea.png"
-  },
-  "commands": {
-    "open_side_panel": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+O",
-        "mac": "Command+Shift+O"
-      },
-      "description": "Open the side panel"
-    }
+    "default_title": "My Chrome Ext"
   },
   "side_panel": {
     "default_path": "index.html"
@@ -21,6 +13,22 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["sidePanel"],
+  "commands": {
+    "open_side_panel": {
+      "description": "Open the side panel",
+      "suggested_key": { "default": "Ctrl+Shift+O", "mac": "Command+Shift+O" }
+    },
+    "render_read_time": {
+      "description": "Show read time on a page",
+      "suggested_key": { "default": "Ctrl+Shift+Z", "mac": "Command+Shift+Z" }
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["renderReadingTime.js"],
+      "matches": ["https://*/*"]
+    }
+  ],
+  "permissions": ["activeTab", "sidePanel", "scripting", "contextMenus"],
   "host_permissions": ["http://*/*", "https://*/*"]
 }

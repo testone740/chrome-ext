@@ -6,8 +6,9 @@ export default defineConfig({
   build: {
     rolldownOptions: {
       input: {
-        side_panel: 'index.html',
+        sidePanel: 'index.html',
         background: 'src/background/service_worker.ts',
+        renderReadingTime: 'src/content/renderReadingTime.ts',
       },
       output: {
         entryFileNames: '[name].js',
